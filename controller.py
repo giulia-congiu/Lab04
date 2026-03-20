@@ -56,9 +56,27 @@ class SpellChecker:
               "4. Exit\n" +
               "______________________________\n")
 
+    def verfica_lingua_scelta(self):
+        pass
+
+    def verfica_modalita_scelta(self):
+        pass
+
+
+
+
+
+
+
+
+
+
+
+
 
 def replaceChars(text):
     chars = "\\`*_{}[]()>#+-.!$?%^;,=_~"
     for c in chars:
         text = text.replace(c, "")
     return text
+
