@@ -47,11 +47,20 @@ class View(object):
                                              ft.dropdown.Option("Dichotomic")],
                                     on_change= self.__controller.verfica_modalita_scelta)
 
-        self._txtInFrase = ft.TextField(label="Add your sentence here")
+        self._txtInFrase = ft.TextField(label="Add your sentence here", expand=True)
 
-        row2= ft.Row(spacing=5, controls=[self._ddModalita, self._txtInFrase], alignment=ft.MainAxisAlignment.START)
+        self._btnCheck= ft.ElevatedButton(text= "Aggiungi ordine",
+                                        on_click= self.__controller.handleSpellCheck,
+                                        width=200)
 
-        self._lvOut = ft.ListView(expand=True)
+        row2= ft.Row(spacing=5, controls=[self._ddModalita, self._txtInFrase, self._btnCheck],
+                     alignment=ft.MainAxisAlignment.START)
+
+        self._lvOut = ft.ListView(expand=1, #occupa tutto lo spazio verticale disponibile nella pagina (equivale a expand=True)
+                                  spacing=10, #spazio in pixel tra un elemento e l'altro dentro la lista
+                                  padding=5, #spazio interno di 20px tra il bordo della lista e il contenuto
+                                  auto_scroll=True #scorre automaticamente verso il basso quando viene aggiunto nuovo contenuto
+                                  )
         self.page.add(row1, row2, self._lvOut)
         self.page.update()
 
@@ -81,7 +90,12 @@ class View(object):
         self._ddLingua.bgcolor = (
             ft.colors.GREY_900 if self.page.theme_mode == ft.ThemeMode.DARK else ft.colors.GREY_300
         )
-
+        self._ddModalita.bgcolor = (
+            ft.colors.GREY_900 if self.page.theme_mode == ft.ThemeMode.DARK else ft.colors.GREY_300
+        )
+        self._txtInFrase.bgcolor = (
+            ft.colors.GREY_900 if self.page.theme_mode == ft.ThemeMode.DARK else ft.colors.GREY_300
+        )
         # self.__txt_container.bgcolor = (
         #     ft.colors.GREY_900 if self.page.theme_mode == ft.ThemeMode.DARK else ft.colors.GREY_300
         # )

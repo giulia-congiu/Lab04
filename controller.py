@@ -56,12 +56,22 @@ class SpellChecker:
               "4. Exit\n" +
               "______________________________\n")
 
-    def verfica_lingua_scelta(self):
-        pass
+    def verfica_lingua_scelta(self, e):
+        language = e.control.value
+        if language is not None:
+            self._view._lvOut.controls.append(
+                ft.Text(f"Language correctly set to: {language}", color="green"))
+        self._view.update()
 
-    def verfica_modalita_scelta(self):
-        pass
+    def verfica_modalita_scelta(self, e):
+        mod = e.control.value
+        if mod is not None:
+            self._view._lvOut.controls.append(
+                ft.Text(f"Modality correctly set to: {mod}", color="green"))
+        self._view.update()
 
+    def handleSpellCheck(self, e):
+        pass
 
 
 
