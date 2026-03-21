@@ -71,7 +71,37 @@ class SpellChecker:
         self._view.update()
 
     def handleSpellCheck(self, e):
-        pass
+        lingua = self._view._ddLingua.value
+        modalita= self._view._ddModalita.value
+        testo = self._view._txtInFrase.value
+
+        if not lingua:
+            self._view._lvOut.controls.append(
+                ft.Text(f"Devi scegliere una lingua", color="red"))
+            self._view.update()
+            return
+
+        if not modalita:
+            self._view._lvOut.controls.append(
+                ft.Text(f"Devi scegliere una modalità", color="red"))
+            self._view.update()
+            return
+
+        paroleErrate, tempo = self.handleSentence(testo, lingua, modalita)
+        self._view._lvOut.controls.append(
+            ft.Text(f"Frase inserita: {testo}"))
+        self._view._lvOut.controls.append(
+            ft.Text(f"Parole errate: {paroleErrate}"))
+        self._view._lvOut.controls.append(
+            ft.Text(f"Tempo richiesto dalla ricerca: {tempo}"))
+        self._view.update()
+
+        self._view._ddLingua.value = None
+        self._view._ddModalita.value = None
+        self._view._txtInFrase.value = ""  # ← stringa vuota per il TextField
+        self._view.update()
+
+
 
 
 

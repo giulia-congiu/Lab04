@@ -49,7 +49,7 @@ class View(object):
 
         self._txtInFrase = ft.TextField(label="Add your sentence here", expand=True)
 
-        self._btnCheck= ft.ElevatedButton(text= "Aggiungi ordine",
+        self._btnCheck= ft.ElevatedButton(text= "Spell Check",
                                         on_click= self.__controller.handleSpellCheck,
                                         width=200)
 
